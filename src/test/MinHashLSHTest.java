@@ -21,7 +21,7 @@ public class MinHashLSHTest {
 		
 		
 		int n = 4;
-		int p = 4;
+		int p = 6;
 		MinHashLSH mlsh = null;
 		File mlshTxt = new File("E:\\MinHashLSH-" + n + "-" + p);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss:SSSS");

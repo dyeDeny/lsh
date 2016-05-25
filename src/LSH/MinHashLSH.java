@@ -96,18 +96,19 @@ public class MinHashLSH implements Serializable {
 			String filePath = basePath + "\\" + f;
 			if (new File(filePath).isDirectory())
 				continue;
-			String kwPath = basePath + "\\key_words\\kw-" + f;
-			File kwFile = new File(kwPath);
-			List<String> keyWords = new ArrayList<String>();
-			if (!kwFile.exists()) {
-				ExtractkeyWords.extract(filePath, kwPath);
-				kwFile = new File(kwPath);
-			}
-
-			String[] kwList = TextConverter.File2String(kwPath).split(",");
-			for (String word : kwList) {
-				keyWords.add(word.trim());
-			}
+//			String kwPath = basePath + "\\key_words\\kw-" + f;
+//			File kwFile = new File(kwPath);
+//			List<String> keyWords = new ArrayList<String>();
+//			if (!kwFile.exists()) {
+//				ExtractkeyWords.extract(filePath, kwPath);
+//				kwFile = new File(kwPath);
+//			}
+//
+//			String[] kwList = TextConverter.File2String(kwPath).split(",");
+//			for (String word : kwList) {
+//				keyWords.add(word.trim());
+//			}
+			List<String> keyWords = ExtractkeyWords.getKeyWords(filePath);
 
 			if (i % 100 == 0)
 				System.out.printf("%d/%d\n", i, num);
