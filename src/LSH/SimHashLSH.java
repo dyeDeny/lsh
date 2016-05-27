@@ -89,6 +89,7 @@ public class SimHashLSH implements Serializable {
 			// System.out.println(basePath + "\\" + list[i]);
 			String path = basePath + "\\" + list[i];
 			// System.out.println(path);
+			if(new File(path).isDirectory()) continue;
 			int[] hashCode = sh.hashFile(path, shingNum);
 			// Printer.printSig(hashCode);
 			Blog blog = new Blog(path, hashCode);

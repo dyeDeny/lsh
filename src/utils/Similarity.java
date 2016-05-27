@@ -64,4 +64,24 @@ public class Similarity {
 		
 		return sim;
 	}
+	
+	public static double JaccardSimilarity_path(String path1, String path2){
+		double sim = 0.0;
+		int size = 30;
+		List<String> ls1 = ExtractkeyWords.getKeyWords(path1);
+		List<String> ls2 = ExtractkeyWords.getKeyWords(path2);
+		
+		Set<String> comm = new HashSet<String>(ls1);
+		Set<String> union = new HashSet<String>(ls1);
+		
+		comm.retainAll(ls2);
+		union.addAll(ls2);
+		
+		if(union.size() == 0) return sim;
+		else{
+			sim = 1.0 * comm.size() / union.size();
+		}
+		
+		return sim;
+	}
 }

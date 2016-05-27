@@ -9,8 +9,18 @@ import java.util.List;
 
 import com.hankcs.hanlp.HanLP;
 
+/**
+ * 提取文本关键字
+ * @author dy5239
+ *
+ */
 public class ExtractkeyWords {
 
+	/**
+	 * 根据文本的路径path读取文本数据，可返回文本的关键词(最多50词)。并将这些关键词存储在同目录下的key_words 文件夹中。
+	 * @param path 文本的绝对路径
+	 * @return List<String> 文本的关键词 
+	 */
 	public static List<String> getKeyWords(String path) {
 
 		List<String> keyWords = new ArrayList<String>(50);
@@ -35,7 +45,11 @@ public class ExtractkeyWords {
 		}
 		return keyWords;
 	}
-
+	/**
+	 * 按照路径inPath读取文本，提取关键词并存储在outPath。
+	 * @param inPath
+	 * @param outPath
+	 */
 	public static void extract(String inPath, String outPath) {
 		try {
 			OutputStream ops = new FileOutputStream(new File(outPath));
@@ -51,7 +65,10 @@ public class ExtractkeyWords {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * 将basePath目录下的所有文本进行关键词提取，并存储在 bathPath\key_words 文件夹下。
+	 * @param basePath
+	 */
 	public static void extract(String basePath) {
 		File base = new File(basePath);
 		String[] list = base.list();
@@ -70,11 +87,11 @@ public class ExtractkeyWords {
 	}
 
 	public static void main(String[] args) {
-		String basePath = "E:\\KaixinBlog";
-		String filePath = "E:\\KaixinBlog\\1.txt";
-		// System.out.println("Start");
-		// ExtractkeyWords.extract(basePath);
-		// System.out.println("Finished");
-		System.out.println(ExtractkeyWords.getKeyWords(filePath));
+		String basePath = "E:\\data";
+//		String filePath = "E:\\KaixinBlog\\1.txt";
+		 System.out.println("Start");
+		 ExtractkeyWords.extract(basePath);
+		 System.out.println("Finished");
+//		System.out.println(ExtractkeyWords.getKeyWords(filePath));
 	}
 }

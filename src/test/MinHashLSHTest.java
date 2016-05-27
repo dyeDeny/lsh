@@ -21,14 +21,14 @@ public class MinHashLSHTest {
 		
 		
 		int n = 4;
-		int p = 6;
+		int p = 3;
 		MinHashLSH mlsh = null;
 		File mlshTxt = new File("E:\\MinHashLSH-" + n + "-" + p);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss:SSSS");
 		
 		if(!mlshTxt.exists()){
 			Date now = new Date();
-			String base = "E:\\SinaBlog";
+			String base = "E:\\data";
 			
 			System.out.println("初始化开始： " + dateFormat.format(now));
 			mlsh = new MinHashLSH(base, n, p);
@@ -62,11 +62,14 @@ public class MinHashLSHTest {
 		String qnum = "";
 		while(!(qnum = input.nextLine()).equals("#")){
 			//记录查询时间
-			String qpath = "E:\\SinaBlog\\" + qnum.trim() + ".txt";
+			String qpath = "E:\\data\\" + qnum.trim() + ".txt";
 			Date now = new Date();
 			System.out.println("query() start at : " + dateFormat.format(now));
 			String text1 = TextConverter.File2String(qpath); 
 			Set<Blog> rs = mlsh.query(qpath);
+			
+			now = new Date();
+			System.out.println("query() done at : " + dateFormat.format(now));
 			
 			for(Blog blog : rs){
 				String text2 = TextConverter.File2String(blog.getPath());
